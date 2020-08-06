@@ -1,0 +1,120 @@
+[
+{
+  "model": "webapp.type",
+  "pk": 1,
+  "fields": {
+    "name": "task"
+  }
+},
+{
+  "model": "webapp.type",
+  "pk": 2,
+  "fields": {
+    "name": "enhancement"
+  }
+},
+{
+  "model": "webapp.type",
+  "pk": 3,
+  "fields": {
+    "name": "bug"
+  }
+},
+{
+  "model": "webapp.status",
+  "pk": 1,
+  "fields": {
+    "name": "in_progress"
+  }
+},
+{
+  "model": "webapp.status",
+  "pk": 2,
+  "fields": {
+    "name": "done"
+  }
+},
+{
+  "model": "webapp.status",
+  "pk": 3,
+  "fields": {
+    "name": "done"
+  }
+},
+{
+  "model": "webapp.status",
+  "pk": 4,
+  "fields": {
+    "name": "in_progress"
+  }
+},
+{
+  "model": "webapp.status",
+  "pk": 5,
+  "fields": {
+    "name": "new"
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 1,
+  "fields": {
+    "title": "Task",
+    "description": ";sdv,'",
+    "date": "2020-08-06",
+    "type": 1,
+    "status": 1
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 2,
+  "fields": {
+    "title": "Task2",
+    "description": "kflq,vfq",
+    "date": "2020-08-06",
+    "type": 2,
+    "status": 2
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 3,
+  "fields": {
+    "title": "Task 3",
+    "description": "jnfq,;f",
+    "date": "2020-08-06",
+    "type": 3,
+    "status": 3
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 4,
+  "fields": {
+    "title": "snv",
+    "description": "kasmvl;",
+    "date": "2020-08-06",
+    "type": 2,
+    "status": 2
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$BarvCOZyKtIH$AKovCXrVIVofifDs1PyoDu6d4C8hzagIlfIGRldKk/k=",
+    "last_login": "2020-08-06T09:20:37.326Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@admin.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2020-08-06T09:18:11.093Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
