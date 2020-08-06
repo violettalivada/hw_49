@@ -1,21 +1,23 @@
 from django.db import models
 
-
+DEFAULT_TYPE = 'task'
 TYPE_CHOICES = [
-    ('task', 'Задача'),
+    (DEFAULT_TYPE, 'Задача'),
     ('bug', 'Ошибка'),
     ('enhancement', 'Улучшение')
 ]
 
+
+DEFAULT_STATUS = 'new'
 STATUS_CHOICES = [
-    ('new', 'Новый'),
+    (DEFAULT_STATUS, 'Новый'),
     ('in_progress', 'В процессе'),
     ('done', 'Выполнено')
 ]
 
 
 class Type(models.Model):
-    name = models.CharField(max_length=40, choices=TYPE_CHOICES, default='task', verbose_name='Тип')
+    name = models.CharField(max_length=40, choices=TYPE_CHOICES, default=DEFAULT_TYPE, verbose_name='Тип')
 
     def __str__(self):
         return self.name
@@ -26,7 +28,7 @@ class Type(models.Model):
 
 
 class Status(models.Model):
-    name = models.CharField(max_length=40, choices=STATUS_CHOICES, default='new', verbose_name='Статус')
+    name = models.CharField(max_length=40, choices=STATUS_CHOICES, default=DEFAULT_STATUS, verbose_name='Статус')
 
     def __str__(self):
         return self.name
