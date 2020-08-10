@@ -1,13 +1,6 @@
 from django.db import models
 
 
-DEFAULT_TYPE = 'task'
-TYPE_CHOICES = [
-    (DEFAULT_TYPE, 'Задача'),
-    ('bug', 'Ошибка'),
-    ('enhancement', 'Улучшение')
-]
-
 DEFAULT_STATUS = 'new'
 STATUS_CHOICES = [
     (DEFAULT_STATUS, 'Новый'),
@@ -17,7 +10,7 @@ STATUS_CHOICES = [
 
 
 class Type(models.Model):
-    name = models.CharField(max_length=40, choices=TYPE_CHOICES, default=DEFAULT_TYPE, verbose_name='Тип')
+    name = models.CharField(max_length=40, verbose_name='Тип')
 
     def __str__(self):
         return self.name
