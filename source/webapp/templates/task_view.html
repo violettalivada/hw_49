@@ -9,7 +9,8 @@
 
 {% block content %}
     <div class="card text-center">
-  <div class="card-header">Тип: {{ task.type }}</div>
+  <div class="card-header">Тип: {% for type in task.types.all %}{{ type.name }}
+      {% if not forloop.last %}, {% endif %}{% endfor %}</div>
   <div class="card-body">
     <h5 class="card-title">{{ task.title }}</h5>
     <p class="card-text">{{ task.description }}</p>

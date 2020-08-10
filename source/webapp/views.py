@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
-from django.views.generic import View, TemplateView
+from django.urls import reverse
+from django.views.generic import View, TemplateView, FormView
 from .forms import *
 
 
@@ -28,61 +29,59 @@ class TaskView(TemplateView):
         return context
 
 
-class TaskCreateView(View):
-    def get(self, request):
-        form = TaskForm()
-        return render(request, 'task_create.html', context={
-            'form': form
-        })
+class TaskCreateView(FormView):
+    template_name = 'task_create.html'
+    form_class = TaskForm
 
-    def post(self, request):
-        form = TaskForm(data=request.POST)
-        if form.is_valid():
-            data = {}
-            for key, value in form.cleaned_data.items():
-                if value is not None:
-                    data[key] = value
-            task = Task.objects.create(**data)
-            return redirect('task_view', pk=task.pk)
-        else:
-            return render(request, 'task_create.html', context={
-                'form': form
-            })
+    def form_valid(self, form):
+        data = {}
+        types = form.cleaned_data.pop('types')
+        for key, value in form.cleaned_data.items():
+            if value is not None:
+                data[key] = value
+        self.task = Task.objects.create(**data)
+        self.task.types.set(types)
+        return redirect(self.get_redirect_url())
+
+    def get_redirect_url(self):
+        return reverse('task_view', kwargs={'pk': self.task.pk})
 
 
-class TaskUpdateView(TemplateView):
+class TaskUpdateView(FormView):
     template_name = 'task_update.html'
+    form_class = TaskForm
+
+    def dispatch(self, request, *args, **kwargs):
+        self.task = self.get_object()
+        return super().dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
-        pk = self.kwargs.get('pk')
-        task = get_object_or_404(Task, pk=pk)
-
-        initial = {}
-        for key in 'title', 'description', 'date', 'type', 'status':
-            initial[key] = getattr(task, key)
-        form = TaskForm(initial=initial)
-
-        context['task'] = task
-        context['form'] = form
-
+        context['task'] = self.task
         return context
 
-    def post(self, request, pk):
-        task = get_object_or_404(Task, pk=pk)
-        form = TaskForm(data=request.POST)
-        if form.is_valid():
-            for key, value in form.cleaned_data.items():
-                if value is not None:
-                    setattr(task, key, value)
-            task.save()
-            return redirect('task_view', pk=task.pk)
-        else:
-            return self.render_to_response({
-                'task': task,
-                'form': form
-            })
+    def get_initial(self):
+        initial = {}
+        for key in 'title', 'description', 'date', 'status':
+            initial[key] = getattr(self.task, key)
+        initial['type'] = self.task.types.all()
+        return initial
+
+    def form_valid(self, form):
+        type = form.cleaned_data.pop('types')
+        for key, value in form.cleaned_data.items():
+            if value is not None:
+                setattr(self.task, key, value)
+        self.task.save()
+        self.task.types.set(type)
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('task_view', kwargs={'pk': self.task.pk})
+
+    def get_object(self):
+        pk = self.kwargs.get('pk')
+        return get_object_or_404(Task, pk=pk)
 
 
 class TaskDeleteView(TemplateView):

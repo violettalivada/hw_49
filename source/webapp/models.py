@@ -35,7 +35,7 @@ class Task(models.Model):
     title = models.CharField(max_length=200, null=False, blank=False, verbose_name='Заголовок')
     description = models.TextField(max_length=3000, null=True, blank=True, verbose_name='Описание')
     date = models.DateField(auto_now_add=True, verbose_name='Дата создания')
-    type = models.ManyToManyField('webapp.Type', related_name='tasks', blank=True)
+    types = models.ManyToManyField('webapp.Type', related_name='tasks', blank=True)
     status = models.ForeignKey('webapp.Status', related_name='status', on_delete=models.PROTECT, verbose_name='Статус')
 
     def __str__(self):
