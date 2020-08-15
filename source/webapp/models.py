@@ -2,14 +2,6 @@ from django.db import models
 from django.core.validators import MinLengthValidator, RegexValidator
 
 
-DEFAULT_STATUS = 'new'
-STATUS_CHOICES = [
-    (DEFAULT_STATUS, 'Новый'),
-    ('in_progress', 'В процессе'),
-    ('done', 'Выполнено')
-]
-
-
 class Type(models.Model):
     name = models.CharField(max_length=40, verbose_name='Тип')
 
@@ -22,8 +14,7 @@ class Type(models.Model):
 
 
 class Status(models.Model):
-    name = models.CharField(max_length=40, choices=STATUS_CHOICES, default=DEFAULT_STATUS,
-                            verbose_name='Статус')
+    name = models.CharField(max_length=40, verbose_name='Статус')
 
     def __str__(self):
         return self.name
