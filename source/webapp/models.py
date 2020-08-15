@@ -38,6 +38,7 @@ class Task(models.Model):
                              validators=(MinLengthValidator(10),))
     description = models.TextField(max_length=3000, null=True, blank=True, verbose_name='Описание')
     date = models.DateField(auto_now_add=True, verbose_name='Дата создания')
+    update_date = models.DateTimeField(auto_now=True, verbose_name='Дата изменения')
     types = models.ManyToManyField('webapp.Type', related_name='tasks', blank=True)
     status = models.ForeignKey('webapp.Status', related_name='status', on_delete=models.PROTECT,
                                verbose_name='Статус')
