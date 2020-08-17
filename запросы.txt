@@ -12,12 +12,9 @@ from webapp.models import *
    Task.objects.filter(Q(status__name__iexact='New') & Q(types__name__iexact='task'))
    Task.objects.filter(Q(status__name__iexact='in_progress') & Q(types__name__iexact='bug'))
 
-
-
 3. Задачи, в названии которых содержится слово "bug" в любом регистре или относящиеся к типу "Баг", имеющие НЕ закрытый статус.
-   qs_1 = Task.objects.exclude(status__name__iexact='Done')
-   qs_2 = Task.objects.filter(Q(types__name__icontains='bug') | Q(types__name__exact='Bug'))
-   qs_1 & qs_2
+   Task.objects.filter(~Q(status__name__iexact='Done')&(Q(types__name__icontains='bug') | Q(types__name__exact='Bug')))
+
 
 4. Количество задач по каждому типу.
    Task.objects.values('types__name').annotate(total=Count('types'))
