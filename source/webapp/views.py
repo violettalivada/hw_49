@@ -3,6 +3,7 @@ from .models import *
 from django.urls import reverse
 from django.views.generic import TemplateView, FormView, ListView
 from .forms import *
+from django.db.models import Q
 
 
 class IndexView(ListView):
@@ -12,7 +13,13 @@ class IndexView(ListView):
     paginate_orphans = 0
 
     def get_queryset(self):
-        return Task.objects.all().order_by('-date')
+        data = Task.objects.all()
+        form = SimpleSearchForm(data=self.request.GET)
+        if form.is_valid():
+            search = form.cleaned_data['search']
+            if search:
+                data = data.filter(Q(title__icontains=search) | Q(description__icontains=search))
+        return data.order_by('-date')
 
 
 class TaskView(TemplateView):

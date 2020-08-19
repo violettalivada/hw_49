@@ -32,3 +32,6 @@ class TaskForm(forms.ModelForm):
             raise ValidationError("Description of the task should not duplicate it's title!")
         return cleaned_data
 
+
+class SimpleSearchForm(forms.Form):
+    search = forms.CharField(max_length=100, required=False, label="Найти")
