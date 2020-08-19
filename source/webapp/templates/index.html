@@ -4,6 +4,9 @@
 
 {% block content %}
     <div class="title mt-5 pb-4" style="text-align: center"><h1>Добро пожаловать в трекер задач!</h1></div>
+     {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+     {% endif %}
         {% for task in tasks %}
         <div class="card-deck">
             <div class="card mb-2 text-center">
@@ -35,4 +38,7 @@
             </div>
         </div>
     {% endfor %}
+     {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
 {% endblock %}

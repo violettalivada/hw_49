@@ -8,6 +8,8 @@ from .forms import *
 class IndexView(ListView):
     template_name = 'index.html'
     context_object_name = 'tasks'
+    paginate_by = 3
+    paginate_orphans = 0
 
     def get_queryset(self):
         return Task.objects.all().order_by('-date')
