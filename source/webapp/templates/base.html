@@ -23,6 +23,14 @@
         <a class="nav-link" href="{% url 'task_create' %}">Добавить задачу</a>
       </li>
     </ul>
+    {% block search %}
+        <div class="search-form">
+            <form class="form-inline my-2 my-lg-0" action="{% url 'index' %}" method="GET">
+                {{ search_form.search }}
+                <input type="submit" value="Найти">
+            </form>
+        </div>
+    {% endblock %}
   </div>
 </nav>
 <div class="container">
