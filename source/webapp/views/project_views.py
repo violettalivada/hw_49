@@ -1,10 +1,7 @@
-from django.shortcuts import redirect, get_object_or_404
-from webapp.models import *
+from webapp.models import Project
 from django.urls import reverse
 from django.views.generic import ListView, DetailView, CreateView
 from webapp.forms import *
-from django.core.paginator import Paginator
-from django.db.models import F
 
 
 class ProjectListView(ListView):

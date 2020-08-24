@@ -72,41 +72,27 @@
 {
   "model": "webapp.task",
   "pk": 1,
-  "fields": {
-    "title": "Task",
-    "description": ";sdv,'av",
-    "date": "2020-08-09",
-    "update_date": "2020-08-15T06:33:09.281Z",
+  "fields": {"title": "My test task",
+    "description": "some long test here",
+    "date": "2020-08-24",
+    "update_date": "2020-08-24T07:10:42.952Z",
     "status": 5,
+    "project": 1,
     "types": [
-      1,
-      3
+      1
     ]
   }
 },
 {
   "model": "webapp.task",
-  "pk": 3,
+  "pk": 2,
   "fields": {
-    "title": "Task 3 slmvl;as",
-    "description": "jnfq,;f",
-    "date": "2020-08-06",
-    "update_date": "2020-08-16T19:07:12.103Z",
-    "status": 3,
-    "types": [
-      2
-    ]
-  }
-},
-{
-  "model": "webapp.task",
-  "pk": 5,
-  "fields": {
-    "title": "Task",
-    "description": "afgegweg",
-    "date": "2020-08-10",
-    "update_date": "2020-08-15T06:33:09.281Z",
-    "status": 5,
+    "title": "Task 3 test",
+    "description": "asgsg",
+    "date": "2020-08-24",
+    "update_date": "2020-08-24T08:41:07.382Z",
+    "status": 1,
+    "project": 1,
     "types": [
       2,
       4
@@ -115,102 +101,48 @@
 },
 {
   "model": "webapp.task",
-  "pk": 6,
-  "fields": {
-    "title": "Task",
-    "description": "afgegweg",
-    "date": "2020-08-10",
-    "update_date": "2020-08-15T06:33:09.281Z",
-    "status": 5,
-    "types": [
-      1,
-      2
-    ]
-  }
-},
-{
-  "model": "webapp.task",
-  "pk": 8,
-  "fields": {
-    "title": "Task",
-    "description": "afgegweg",
-    "date": "2020-08-10",
-    "update_date": "2020-08-15T06:33:09.281Z",
-    "status": 5,
-    "types": [
-      1,
-      2
-    ]
-  }
-},
-{
-  "model": "webapp.task",
-  "pk": 9,
-  "fields": {
-    "title": "lmsavfnlmvdsa",
-    "description": "\u0410 \u042e\u0410\u0411.\u044b\u044e",
-    "date": "2020-08-12",
-    "update_date": "2020-08-15T06:45:27.822Z",
-    "status": 3,
-    "types": [
-      4
-    ]
-  }
-},
-{
-  "model": "webapp.task",
-  "pk": 11,
-  "fields": {
-    "title": "sjdnvpamv;v",
-    "description": "sjdnvpamv;v",
-    "date": "2020-08-12",
-    "update_date": "2020-08-15T06:33:09.281Z",
-    "status": 4,
-    "types": [
-      2
-    ]
-  }
-},
-{
-  "model": "webapp.task",
-  "pk": 16,
-  "fields": {
-    "title": "ASKNCAS;VASM'V",
-    "description": "ASKNCAS;VAS",
-    "date": "2020-08-13",
-    "update_date": "2020-08-15T06:33:09.281Z",
-    "status": 4,
-    "types": [
-      4
-    ]
-  }
-},
-{
-  "model": "webapp.task",
-  "pk": 17,
+  "pk": 3,
   "fields": {
     "title": "TESTTESTTEST",
-    "description": "lKANFVP",
-    "date": "2020-08-16",
-    "update_date": "2020-08-16T17:50:23.536Z",
-    "status": 3,
-    "types": [
-      4
-    ]
+    "description": "sdvkjnlkv;lwe",
+    "date": "2020-08-24",
+    "update_date": "2020-08-24T09:37:10.194Z",
+    "status": 2,
+    "project": 1,
+    "types": []
   }
 },
 {
   "model": "webapp.task",
-  "pk": 18,
+  "pk": 4,
   "fields": {
-    "title": "kasnv;lamv;",
-    "description": "asnvpslamv;lad",
-    "date": "2020-08-16",
-    "update_date": "2020-08-16T18:25:10.074Z",
+    "title": "Task ;askf;",
+    "description": "sdvreb",
+    "date": "2020-08-24",
+    "update_date": "2020-08-24T09:52:09.829Z",
     "status": 3,
-    "types": [
-      5
-    ]
+    "project": 2,
+    "types": []
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 1,
+  "fields": {
+    "title": "Test",
+    "description": "some text here",
+    "start_date": "2020-08-24",
+    "end_date": "2020-08-30"
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 2,
+  "fields": {
+    "title": "My project",
+    "description": "ashbf lkelv",
+    "start_date": "2020-08-08",
+    "end_date": null
   }
 },
 {
@@ -218,7 +150,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$150000$BarvCOZyKtIH$AKovCXrVIVofifDs1PyoDu6d4C8hzagIlfIGRldKk/k=",
-    "last_login": "2020-08-06T09:20:37.326Z",
+    "last_login": "2020-08-24T07:06:51.128Z",
     "is_superuser": true,
     "username": "admin",
     "first_name": "",
