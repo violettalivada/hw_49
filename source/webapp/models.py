@@ -33,6 +33,8 @@ class Task(models.Model):
     types = models.ManyToManyField('webapp.Type', related_name='tasks', blank=True)
     status = models.ForeignKey('webapp.Status', related_name='status', on_delete=models.PROTECT,
                                verbose_name='Статус')
+    project = models.ForeignKey('webapp.Project', related_name='project', on_delete=models.PROTECT,
+                                verbose_name='Проект')
 
     def __str__(self):
         return "{}. {}".format(self.pk, self.title)
