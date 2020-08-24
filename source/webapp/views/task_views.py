@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, get_object_or_404
 from webapp.models import *
 from django.urls import reverse
-from django.views.generic import TemplateView, FormView, ListView
+from django.views.generic import TemplateView, FormView, ListView, CreateView
 from webapp.forms import *
 from django.db.models import Q
 
@@ -33,16 +33,17 @@ class TaskView(TemplateView):
         return context
 
 
-class TaskCreateView(FormView):
+class TaskCreateView(CreateView):
+    model = Task
     template_name = 'task_templates/task_create.html'
     form_class = TaskForm
 
     def form_valid(self, form):
-        self.task = form.save()
-        return redirect(self.get_redirect_url())
-
-    def get_redirect_url(self):
-        return reverse('task_view', kwargs={'pk': self.task.pk})
+        project = get_object_or_404(Project, pk=self.kwargs.get('pk'))
+        task = form.save(commit=False)
+        task.project = project
+        task.save()
+        return redirect('project_view', pk=project.pk)
 
 
 class TaskUpdateView(FormView):
@@ -90,7 +91,6 @@ class TaskDeleteView(TemplateView):
         task = get_object_or_404(Task, pk=pk)
         task.delete()
         return redirect('index')
-
 
 
 

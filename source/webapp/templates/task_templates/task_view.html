@@ -13,6 +13,7 @@
       {% if not forloop.last %}, {% endif %}{% endfor %}</div>
   <div class="card-body">
     <h5 class="card-title">{{ task.title }}</h5>
+    <p class="card-text">Проект: {{ task.project }}</p>
     <p class="card-text">{{ task.description }}</p>
     <p class="card-text">Дата создания: {{ task.date }}</p>
     <p class="card-text">Дата изменения: {{ task.update_date }}</p>

@@ -1,13 +1,21 @@
-{% extends 'partial/../base.html' %}
+{% extends "partial/../base.html" %}
 
-{% block title %}To do list{% endblock %}
+{% block title %}View{% endblock %}
+
 
 {% block content %}
-    <div class="title mt-5 pb-4" style="text-align: center"><h1>Добро пожаловать в трекер задач!</h1></div>
-     {% if is_paginated %}
-        {% include 'partial/pagination.html' %}
-     {% endif %}
-        {% for task in tasks %}
+    <div class="card text-center">
+      <div class="card-header">Проект №{{ project.pk }}</div>
+          <div class="card-body">
+            <h5 class="card-title">{{ project.title }}</h5>
+            <p class="card-text">{{ project.description }}</p>
+            <p class="card-text">Дата начала: {{ project.start_date }}</p>
+            <p class="card-text">Дата окончания: {{ project.end_date }}</p>
+            <a class="nav-link" href="{% url 'task_create' pk=project.pk %}">Добавить задачу</a>
+          </div>
+    </div>
+      <h3>Задачи:</h3>
+    {% for task in tasks %}
         <div class="card-deck">
             <div class="card mb-2 text-center">
             <div class="card-body">
@@ -38,8 +46,7 @@
       </div>
             </div>
         </div>
+    {% empty %}
+        <p>Нет задач</p>
     {% endfor %}
-     {% if is_paginated %}
-        {% include 'partial/pagination.html' %}
-    {% endif %}
 {% endblock %}

@@ -22,8 +22,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', IndexView.as_view(), name='index'),
     path('task/<int:pk>/', TaskView.as_view(), name='task_view'),
-    path('tasks/add/', TaskCreateView.as_view(), name='task_create'),
     path('task/<int:pk>/update/', TaskUpdateView.as_view(), name='task_update'),
     path('task/<int:pk>/delete/', TaskDeleteView.as_view(), name='task_delete'),
-    path('projects/', ProjectListView.as_view(), name='project_list')
+    path('projects/', ProjectListView.as_view(), name='project_list'),
+    path('project/<int:pk>/', ProjectView.as_view(), name='project_view'),
+    path('project/<int:pk>/tasks/add', TaskCreateView.as_view(), name='task_create'),
+    path('projects/add/', ProjectCreateView.as_view(), name='project_create'),
 ]
