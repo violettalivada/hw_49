@@ -47,7 +47,7 @@ class Task(models.Model):
 class Project(models.Model):
     title = models.CharField(max_length=200, null=False, blank=False, verbose_name='Заголовок')
     description = models.TextField(max_length=3000, null=True, blank=True, verbose_name='Описание')
-    start_date = models.DateField(auto_now=False, verbose_name='Дата выполнения')
+    start_date = models.DateField(auto_now=False, verbose_name='Дата начала')
     end_date = models.DateField(null=True, blank=True, verbose_name='Дата окончания')
 
     def __str__(self):

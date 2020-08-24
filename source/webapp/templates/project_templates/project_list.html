@@ -1,0 +1,23 @@
+{% extends 'partial/../base.html' %}
+
+{% block title %}To do list{% endblock %}
+
+{% block content %}
+    <div class="title mt-5 pb-4" style="text-align: center"><h1>Проекты:</h1></div>
+     {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+     {% endif %}
+        {% for project in projects %}
+        <div class="card-deck">
+            <div class="card mb-2 text-center">
+            <div class="card-body">
+            <h5 class="card-title">Название: {{ project.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Дата начала: {{ project.start_date }}</h6>
+      </div>
+            </div>
+        </div>
+    {% endfor %}
+     {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
+{% endblock %}

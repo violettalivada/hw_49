@@ -35,3 +35,10 @@ class TaskForm(forms.ModelForm):
 
 class SimpleSearchForm(forms.Form):
     search = forms.CharField(max_length=100, required=False, label="Найти")
+
+
+class ProjectForm(forms.Form):
+    model = Project
+    fields = ['title', 'description', 'start_date', 'end_date']
+    widgets = {'start_date': forms.DateInput(attrs={'type': 'date'}),
+               'end_date': forms.DateInput(attrs={'type': 'date'})}
