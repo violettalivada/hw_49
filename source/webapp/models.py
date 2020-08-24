@@ -40,3 +40,17 @@ class Task(models.Model):
     class Meta:
         verbose_name = 'Задача'
         verbose_name_plural = 'Задачи'
+
+
+class Project(models.Model):
+    title = models.CharField(max_length=200, null=False, blank=False, verbose_name='Заголовок')
+    description = models.TextField(max_length=3000, null=True, blank=True, verbose_name='Описание')
+    start_date = models.DateField(auto_now=False, verbose_name='Дата выполнения')
+    end_date = models.DateField(null=True, blank=True, verbose_name='Дата окончания')
+
+    def __str__(self):
+        return "{}. {}".format(self.pk, self.title)
+
+    class Meta:
+        verbose_name = 'Проект'
+        verbose_name_plural = 'Проекты'
