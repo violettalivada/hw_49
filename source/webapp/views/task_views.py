@@ -1,8 +1,8 @@
 from django.shortcuts import redirect, get_object_or_404
-from .models import *
+from webapp.models import *
 from django.urls import reverse
 from django.views.generic import TemplateView, FormView, ListView
-from .forms import *
+from webapp.forms import *
 from django.db.models import Q
 
 
