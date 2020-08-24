@@ -7,7 +7,7 @@ from django.db.models import Q
 
 
 class IndexView(ListView):
-    template_name = 'index.html'
+    template_name = 'task_templates/task_list.html'
     context_object_name = 'tasks'
     paginate_by = 3
     paginate_orphans = 0
@@ -23,7 +23,7 @@ class IndexView(ListView):
 
 
 class TaskView(TemplateView):
-    template_name = 'task_view.html'
+    template_name = 'task_templates/task_view.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -34,7 +34,7 @@ class TaskView(TemplateView):
 
 
 class TaskCreateView(FormView):
-    template_name = 'task_create.html'
+    template_name = 'task_templates/task_create.html'
     form_class = TaskForm
 
     def form_valid(self, form):
@@ -46,7 +46,7 @@ class TaskCreateView(FormView):
 
 
 class TaskUpdateView(FormView):
-    template_name = 'task_update.html'
+    template_name = 'task_templates/task_update.html'
     form_class = TaskForm
 
     def get_form_kwargs(self):
@@ -76,7 +76,7 @@ class TaskUpdateView(FormView):
 
 
 class TaskDeleteView(TemplateView):
-    template_name = 'task_delete.html'
+    template_name = 'task_templates/task_delete.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
