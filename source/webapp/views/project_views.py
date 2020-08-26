@@ -1,5 +1,5 @@
 from webapp.models import Project
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from webapp.forms import *
 from django.shortcuts import get_object_or_404, redirect
@@ -46,3 +46,8 @@ class ProjectUpdateView(UpdateView):
         return reverse('project_view', kwargs={'pk': self.object.pk})
 
 
+class ProjectDeleteView(DeleteView):
+    template_name = 'project_templates/project_delete.html'
+    model = Project
+    context_object_name = 'project'
+    success_url = reverse_lazy('index')
