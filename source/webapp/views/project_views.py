@@ -2,13 +2,12 @@ from webapp.models import Project
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from webapp.forms import *
-from django.shortcuts import get_object_or_404, redirect
 
 
 class ProjectListView(ListView):
     template_name = 'project_templates/project_list.html'
     context_object_name = 'projects'
-    paginate_by = 3
+    paginate_by = 2
     paginate_orphans = 0
 
     def get_queryset(self):

@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, get_object_or_404
 from webapp.models import *
-from django.urls import reverse
-from django.views.generic import TemplateView, FormView, ListView, CreateView
+from django.urls import reverse, reverse_lazy
+from django.views.generic import TemplateView, UpdateView, ListView, CreateView, DeleteView
 from webapp.forms import *
 from django.db.models import Q
 
@@ -47,51 +47,21 @@ class TaskCreateView(CreateView):
         return redirect('project_view', pk=project.pk)
 
 
-class TaskUpdateView(FormView):
+class TaskUpdateView(UpdateView):
+    model = Task
     template_name = 'task_templates/task_update.html'
     form_class = TaskForm
-
-    def get_form_kwargs(self):
-        kwargs = super().get_form_kwargs()
-        kwargs['instance'] = self.task
-        return kwargs
-
-    def dispatch(self, request, *args, **kwargs):
-        self.task = self.get_object()
-        return super().dispatch(request, *args, **kwargs)
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['task'] = self.task
-        return context
-
-    def form_valid(self, form):
-        self.task = form.save()
-        return super().form_valid(form)
+    context_object_name = 'task'
 
     def get_success_url(self):
-        return reverse('task_view', kwargs={'pk': self.task.pk})
-
-    def get_object(self):
-        pk = self.kwargs.get('pk')
-        return get_object_or_404(Task, pk=pk)
+        return reverse('task_view', kwargs={'pk': self.object.pk})
 
 
-class TaskDeleteView(TemplateView):
+class TaskDeleteView(DeleteView):
     template_name = 'task_templates/task_delete.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        pk = self.kwargs.get('pk')
-        task = get_object_or_404(Task, pk=pk)
-
-        context['task'] = task
-        return context
-
-    def post(self, request, pk):
-        task = get_object_or_404(Task, pk=pk)
-        task.delete()
-        return redirect('index')
+    model = Task
+    context_object_name = 'task'
+    success_url = reverse_lazy('index')
 
 
 
