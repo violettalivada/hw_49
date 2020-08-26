@@ -72,7 +72,8 @@
 {
   "model": "webapp.task",
   "pk": 1,
-  "fields": {"title": "My test task",
+  "fields": {
+    "title": "My test task",
     "description": "some long test here",
     "date": "2020-08-24",
     "update_date": "2020-08-24T07:10:42.952Z",
@@ -101,19 +102,6 @@
 },
 {
   "model": "webapp.task",
-  "pk": 3,
-  "fields": {
-    "title": "TESTTESTTEST",
-    "description": "sdvkjnlkv;lwe",
-    "date": "2020-08-24",
-    "update_date": "2020-08-24T09:37:10.194Z",
-    "status": 2,
-    "project": 1,
-    "types": []
-  }
-},
-{
-  "model": "webapp.task",
   "pk": 4,
   "fields": {
     "title": "Task ;askf;",
@@ -126,13 +114,28 @@
   }
 },
 {
+  "model": "webapp.task",
+  "pk": 6,
+  "fields": {
+    "title": "New project",
+    "description": "jnskvndms[v",
+    "date": "2020-08-26",
+    "update_date": "2020-08-26T07:48:17.654Z",
+    "status": 3,
+    "project": 2,
+    "types": [
+      1
+    ]
+  }
+},
+{
   "model": "webapp.project",
   "pk": 1,
   "fields": {
     "title": "Test",
-    "description": "some text here",
+    "description": "some text here nxvlk",
     "start_date": "2020-08-24",
-    "end_date": "2020-08-30"
+    "end_date": "2020-09-06"
   }
 },
 {
@@ -142,6 +145,16 @@
     "title": "My project",
     "description": "ashbf lkelv",
     "start_date": "2020-08-08",
+    "end_date": null
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 4,
+  "fields": {
+    "title": "Ezrtdfuygio",
+    "description": "vhbnkml;",
+    "start_date": "2020-08-26",
     "end_date": null
   }
 },
