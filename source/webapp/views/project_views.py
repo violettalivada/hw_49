@@ -1,7 +1,8 @@
 from webapp.models import Project
 from django.urls import reverse
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from webapp.forms import *
+from django.shortcuts import get_object_or_404, redirect
 
 
 class ProjectListView(ListView):
@@ -30,6 +31,16 @@ class ProjectCreateView(CreateView):
     model = Project
     template_name = 'project_templates/project_create.html'
     form_class = ProjectForm
+
+    def get_success_url(self):
+        return reverse('project_view', kwargs={'pk': self.object.pk})
+
+
+class ProjectUpdateView(UpdateView):
+    model = Project
+    template_name = 'project_templates/project_update.html'
+    form_class = ProjectForm
+    context_key = 'project'
 
     def get_success_url(self):
         return reverse('project_view', kwargs={'pk': self.object.pk})
