@@ -22,9 +22,14 @@
       <li class="nav-item my-2">
         <a class="nav-link" href="{% url 'project_list' %}">Список проектов</a>
       </li>
-      <li class="nav-item my-2">
-        <a class="nav-link" href="{% url 'project_create' %}">Создать проект</a>
-      </li>
+        {% if request.user.is_authenticated %}
+            <li class="nav-item my-2">
+                <a class="nav-link" href="{% url 'project_create' %}">Создать проект</a>
+                {% block menu %}{% endblock %}
+            </li>
+        {% else %}
+            <li><a href="{% url 'login' %}">Login</a></li>
+        {% endif %}
     </ul>
     {% block search %}
         <div class="search-form">

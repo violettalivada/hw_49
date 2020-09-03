@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from webapp.views import *
+from django.contrib.auth.views import LoginView, LogoutView
 
 
 urlpatterns = [
@@ -30,4 +31,5 @@ urlpatterns = [
     path('projects/add/', ProjectCreateView.as_view(), name='project_create'),
     path('project/<int:pk>/update/', ProjectUpdateView.as_view(), name='project_update'),
     path('project/<int:pk>/delete/', ProjectDeleteView.as_view(), name='project_delete'),
+    path('accounts/login/', LoginView.as_view(), name='login'),
 ]
