@@ -25,10 +25,14 @@
         {% if request.user.is_authenticated %}
             <li class="nav-item my-2">
                 <a class="nav-link" href="{% url 'project_create' %}">Создать проект</a>
-                {% block menu %}{% endblock %}
             </li>
+            <li class="nav-item my-2">
+                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+            </li>
+                {% block menu %}{% endblock %}
+
         {% else %}
-            <li><a href="{% url 'login' %}">Login</a></li>
+            <li class="nav-item my-2"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
         {% endif %}
     </ul>
     {% block search %}
