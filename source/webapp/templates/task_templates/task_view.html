@@ -3,8 +3,8 @@
 {% block title %}View{% endblock %}
 
 {% block menu %}
-    <li><a href="{% url 'task_update' task.pk %}">Редактировать</a></li>
-    <li><a href="{% url 'task_delete' task.pk %}">Удалить</a></li>
+    <li class="nav-item my-2"><a class="nav-link" href="{% url 'task_update' task.pk %}">Редактировать</a></li>
+    <li class="nav-item my-2"><a class="nav-link" href="{% url 'task_delete' task.pk %}">Удалить</a></li>
 {% endblock %}
 
 {% block content %}
