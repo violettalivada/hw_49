@@ -1,5 +1,5 @@
 {% load crispy_forms_filters %}
-<form action="{{ action_url }}" method="{{ form_method }}">
+<form action="{{ action_url }}" method="{{ form_method }}" style="padding-bottom: 40px">
     {% csrf_token %}
     {{ form|crispy }}
     <input type="submit" value="{{ button_text|default:"Submit" }}"/>
