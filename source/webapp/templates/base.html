@@ -17,27 +17,27 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active my-2">
-        <a class="nav-link" href="{% url 'index' %}">На главную <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{% url 'webapp:index' %}">На главную <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item my-2">
-        <a class="nav-link" href="{% url 'project_list' %}">Список проектов</a>
+        <a class="nav-link" href="{% url 'webapp:project_list' %}">Список проектов</a>
       </li>
         {% if request.user.is_authenticated %}
             <li class="nav-item my-2">
-                <a class="nav-link" href="{% url 'project_create' %}">Создать проект</a>
+                <a class="nav-link" href="{% url 'webapp:project_create' %}">Создать проект</a>
             </li>
             <li class="nav-item my-2">
-                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                <a class="nav-link" href="{% url 'accounts:logout' %}?next={{ request.get_full_path }}">Logout</a>
             </li>
                 {% block menu %}{% endblock %}
 
         {% else %}
-            <li class="nav-item my-2"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+            <li class="nav-item my-2"><a class="nav-link" href="{% url 'accounts:login' %}?next={{ request.get_full_path }}">Login</a></li>
         {% endif %}
     </ul>
     {% block search %}
         <div class="search-form">
-            <form class="form-inline my-2 my-lg-0" action="{% url 'index' %}" method="GET">
+            <form class="form-inline my-2 my-lg-0" action="{% url 'webapp:index' %}" method="GET">
                 {{ search_form.search }}
                 <input class="form-control mr-sm-2" type="submit" value="Найти">
             </form>
