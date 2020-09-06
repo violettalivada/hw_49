@@ -3,12 +3,12 @@
 {% block title %}Update{% endblock %}
 
 {% block menu %}
-    <li class="nav-item my-2"><a class="nav-link" href="{% url 'project_view' project.pk %}">Назад</a></li>
+    <li class="nav-item my-2"><a class="nav-link" href="{% url 'webapp:project_view' project.pk %}">Назад</a></li>
 {% endblock %}
 
 {% block content %}
     <h1>Update Project</h1>
 
-    {% url 'project_update' project.pk as action_url %}
+    {% url 'webapp:project_update' project.pk as action_url %}
     {% include 'partial/form.html' with form_method='post' action_url=action_url %}
 {% endblock %}
