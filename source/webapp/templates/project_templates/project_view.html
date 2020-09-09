@@ -1,6 +1,9 @@
 {% extends "partial/../base.html" %}
 
 {% block title %}View{% endblock %}
+{% block menu %}
+    <li class="nav-item my-2"><a class="nav-link" href="{% url 'webapp:add_user' project.pk %}">Добавить пользователя</a></li>
+{% endblock %}
 
 {% block content %}
     <div class="card text-center">
@@ -25,6 +28,10 @@
             <a class="nav-link" href="{% url 'webapp:task_create' pk=project.pk %}">Добавить задачу</a>
           </div>
     </div>
+        <h3>Разработчики:</h3>
+    {% for user in object.users.all %}
+        <p>{{ user.username }}</p>
+    {% endfor %}
       <h3>Задачи:</h3>
     {% for task in tasks %}
         <div class="card-deck">

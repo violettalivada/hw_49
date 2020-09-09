@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
 from webapp.models import Project
 from django.urls import reverse, reverse_lazy
@@ -52,3 +52,15 @@ class ProjectDeleteView(LoginRequiredMixin, DeleteView):
     model = Project
     context_object_name = 'project'
     success_url = reverse_lazy('index')
+
+
+class AddUserView(UpdateView):
+    model = Project
+    form_class = UserForm
+    template_name = 'project_templates/add_users.html'
+
+    def get_success_url(self):
+        return reverse('webapp:project_view', kwargs={'pk': self.object.pk})
+
+
+

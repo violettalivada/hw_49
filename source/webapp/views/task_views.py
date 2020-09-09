@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.shortcuts import redirect, get_object_or_404
 from webapp.models import *
 from django.urls import reverse, reverse_lazy
@@ -34,7 +34,7 @@ class TaskView(TemplateView):
         return context
 
 
-class TaskCreateView(LoginRequiredMixin, CreateView):
+class TaskCreateView(PermissionRequiredMixin, CreateView):
     model = Task
     template_name = 'task_templates/task_create.html'
     form_class = TaskForm
