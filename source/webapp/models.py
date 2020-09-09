@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.core.validators import MinLengthValidator, RegexValidator
 
@@ -49,6 +50,7 @@ class Project(models.Model):
     description = models.TextField(max_length=3000, null=True, blank=True, verbose_name='Описание')
     start_date = models.DateField(auto_now=False, verbose_name='Дата начала')
     end_date = models.DateField(null=True, blank=True, verbose_name='Дата окончания')
+    users = models.ManyToManyField(get_user_model(), related_name='projects', verbose_name='Пользователи')
 
     def __str__(self):
         return "{}. {}".format(self.pk, self.title)
