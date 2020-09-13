@@ -8,7 +8,7 @@ from django.db.models import Q
 
 
 class IndexView(ListView):
-    template_name = 'task_templates/task_list.html'
+    template_name = 'task_templates/index.html'
     context_object_name = 'tasks'
     paginate_by = 3
     paginate_orphans = 0
