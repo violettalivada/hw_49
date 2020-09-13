@@ -2,6 +2,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.core.exceptions import ValidationError
 
+from accounts.models import Profile
+
 
 class MyUserCreationForm(UserCreationForm):
     email = forms.CharField(required=True, widget=forms.EmailInput(attrs={'class': 'validate', }))
@@ -17,3 +19,8 @@ class MyUserCreationForm(UserCreationForm):
         if not first_name and not last_name:
             raise ValidationError('Пожалуйста, укажите имя или фамилию! ')
         return cleaned_data
+
+    def save(self, commit=True):
+        user = super().save(commit=commit)
+        Profile.objects.create(user=user)
+        return user
