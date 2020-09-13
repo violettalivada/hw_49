@@ -35,8 +35,12 @@
                 <a class="nav-link active" href="{% url 'accounts:detail' request.user.pk %}">Привет,
                     {{ request.user.get_full_name|default:request.user.username }}!</a>
             </li>
+            {% if perms.accounts.view_profile%}
+               <li class="nav-item my-2">
+                <a class="nav-link" href="{% url 'accounts:profile_list' %}">Пользователи</a>
+               </li>
+            {% endif %}
                 {% block menu %}{% endblock %}
-
         {% else %}
             <li class="nav-item my-2"><a class="nav-link" href="{% url 'accounts:login' %}?next={{ request.get_full_path }}">Login</a></li>
             <li class="nav-item my-2"><a class="nav-link" href="{% url 'accounts:create' %}?next={{ request.get_full_path }}">Sign in</a></li>
