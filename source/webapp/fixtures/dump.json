@@ -148,15 +148,15 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$150000$BarvCOZyKtIH$AKovCXrVIVofifDs1PyoDu6d4C8hzagIlfIGRldKk/k=",
-    "last_login": "2020-09-10T00:31:34.689Z",
+    "last_login": "2020-09-13T02:06:22Z",
     "is_superuser": true,
     "username": "admin",
-    "first_name": "",
-    "last_name": "",
+    "first_name": "\u0426\u0430\u0440\u044c",
+    "last_name": "\u0411\u0430\u0442\u044e\u0448\u043a\u0430",
     "email": "admin@admin.com",
     "is_staff": true,
     "is_active": true,
-    "date_joined": "2020-08-06T09:18:11.093Z",
+    "date_joined": "2020-08-06T09:18:11Z",
     "groups": [],
     "user_permissions": []
   }
@@ -240,7 +240,7 @@
   "pk": 7,
   "fields": {
     "password": "pbkdf2_sha256$150000$reZP3HGPJtLC$rVxKXvHVB75hQDm9WbFqC8LUdZ0mkd0AFsstNof/Q4k=",
-    "last_login": "2020-09-10T00:14:03.953Z",
+    "last_login": "2020-09-13T02:40:17.901Z",
     "is_superuser": false,
     "username": "lead",
     "first_name": "\u041a\u0430\u043f\u0438\u0442\u0430\u043d",
@@ -260,7 +260,7 @@
   "pk": 8,
   "fields": {
     "password": "pbkdf2_sha256$150000$e23LQY1l0PRi$xL/+mMrGoG9fyySCg0sjn48sUOKE2bITrwgDvV0hIl8=",
-    "last_login": "2020-09-10T00:33:01.503Z",
+    "last_login": "2020-09-13T02:47:40.887Z",
     "is_superuser": false,
     "username": "dev",
     "first_name": "\u0420\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a",
