@@ -3,7 +3,7 @@
 {% block title %}Пользователь{% endblock %}
 
 {% block menu %}
-    <li class="nav-item my-2"><a class="nav-link" href="#">Редактировать</a></li>
+    <li class="nav-item my-2"><a class="nav-link" href="{% url 'accounts:change' user_obj.pk %}">Редактировать</a></li>
     <li class="nav-item my-2"><a class="nav-link" href="#">Смена пароля</a></li>
 {% endblock %}
 
@@ -16,7 +16,7 @@
     <p>Имя: {{ user_obj.first_name }}</p>
     <p>Фамилия: {{ user_obj.last_name }}</p>
     <p>О себе: {{ user_obj.profile.about_user }}</p>
-    <p>Профиль на GitHub:{{ user_obj.git_profile }}</p>
+    <p>Профиль на GitHub:{{ user_obj.profile.git_profile }}</p>
 
     <h2 class="text-center clear m-3">Проекты:</h2>
     {% include 'partial/project_list.html' %}
