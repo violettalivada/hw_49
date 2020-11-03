@@ -8,7 +8,7 @@ from django.urls import reverse
 from django.views.generic import CreateView, DetailView, ListView, UpdateView
 
 from accounts.forms import MyUserCreationForm, UserChangeForm, ProfileChangeForm, PasswordChangeForm
-from accounts.models import Profile
+#from accounts.models import Profile
 
 
 class RegisterView(CreateView):
