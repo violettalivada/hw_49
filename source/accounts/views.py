@@ -12,7 +12,7 @@ from accounts.models import Profile
 
 
 class RegisterView(CreateView):
-    #model = User
+    model = User
     template_name = 'user_create.html'
     form_class = MyUserCreationForm
 
